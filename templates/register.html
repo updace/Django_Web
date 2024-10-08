@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册页面</title>
+    <link rel="Stylesheet" href={% static 'css/register.css' %}>
+</head>
+<body>
+<div class="d1">
+    <form method="post" action="">
+        {% csrf_token %}
+        <div class="head">
+            注册页面
+        </div>
+        <br>
+
+        <input type="text" placeholder="用户名" name="Name" class="name" size="20px">
+        <br>
+        <input type="text" placeholder="密码" name="Password" class="psw" size="20px">
+        <br>
+        <input type="text" placeholder="确认密码" name="Password_again" class="psw_again" size="20px">
+
+        <br>
+        <div class="d2">
+            <input type="submit" value="注册"/>
+        </div>
+    </form>
+</div>
+</body>
+</html>

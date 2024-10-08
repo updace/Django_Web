@@ -1,0 +1,96 @@
+body {
+    background-color: rgb(250, 249, 245);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    /* div标签居中显示 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 500px;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid#000; */
+}
+
+.head {
+    font-family: 黑;
+    font-size: 25px;
+    color: #b598a1;
+}
+
+.tt {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #000;
+    border-radius: 7px;
+    /* width: 200px;
+    height: 200px; */
+    width: 85%;
+    height: 100%
+}
+
+.name {
+
+    text-indent: 27px;
+    /* 设置边缘弧度 */
+    border-radius: 10px;
+    border: 1px solid #b2bbbe;
+
+    /* 设置聚焦后边框的颜色 */
+    outline-color: #bbb5ac;
+
+    width: 65%;
+    height: 10%;
+
+}
+
+.password {
+    text-indent: 27px;
+    /* 设置边缘弧度 */
+    border-radius: 10px;
+    border: 1px solid #b2bbbe;
+
+    /* 设置聚焦后边框的颜色 */
+    outline-color: #bbb5ac;
+
+    width: 65%;
+    height: 10%;
+}
+
+
+/* .ver {
+    margin-left: 0;
+    padding: auto;
+    border-radius: 10px;
+} */
+
+.button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-basis: auto;
+    width: 150px;
+    /* border: 1px solid#000;
+    border-radius: 3px;
+    border: none;
+    outline: none; */
+}

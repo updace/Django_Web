@@ -1,0 +1,51 @@
+{#要载入静态文件夹才能使用静态文件！#}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="Stylesheet" href={% static 'css/translate.css' %}>
+    <title>Document</title>
+    <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static 'js/translate.js' %}"></script>
+</head>
+
+<body>
+<div class="head">
+    <form action="#">
+        {% csrf_token %}
+        <select name="language" id="source_lang">
+            <option value="auto">自动</option>
+            <option value="zh">汉语</option>
+            <option value="en">英语</option>
+        </select>
+    </form>
+
+    <img src="{% static 'images/下载.svg' %}" width="20px" height="20px">
+
+    <form action="#">
+        {% csrf_token %}
+        <select name="language" id="target_lang">
+            <option value="zh">汉语</option>
+            <option value="en">英语</option>
+        </select>
+    </form>
+</div>
+<div class="main">
+    <div class="user">
+        <textarea id="Source" class="source" placeholder="请输入要翻译的文字"></textarea>
+    </div>
+
+    <div class="robot">
+        <textarea id="Target" class="target" placeholder="译文" readonly="true"></textarea>
+    </div>
+</div>
+<br>
+<div class="translate_bt">
+    <button onclick="change()">翻译</button>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>登录界面</title>
+    <link rel="Stylesheet" href={% static 'css/login.css' %}>
+
+    <script>
+        function redict_to_register()
+        {
+            window.location.href = '{% url "register" %}';
+        }
+    </script>
+</head>
+
+<body>
+<div class="log_bg">
+    <img src="{% static 'images/log1.jpg' %}" width="500px" height="500px" style="border-radius: 10px;" alt="封面">
+</div>
+<div class="login">
+    <form method="post" action="">
+        {% csrf_token %}
+        <div class="head">
+            登录页面
+        </div>
+
+        <br>
+        {# class属性是给css文件用的，name文件是给后端用的 #}
+        <input name="Name" class="name" type="text" placeholder="用户名" size="20px"
+               style="background:url('{% static "images/user.png" %}'); background-repeat: no-repeat; background-size: 20px; background-position: 5px;"/>
+        <br>
+        <input name="Password" class="password" type="password" placeholder="密码"
+               style="background: url('{% static "images/密码.png" %}'); background-repeat: no-repeat; background-size: 20px; background-position: 5px;"/>
+        <br>
+
+        <div class="button">
+            <input class="log" type="submit" value="登录"/>
+            <input class="signup" type="button" value="注册" onclick="redict_to_register()"/>
+        </div>
+    </form>
+</div>
+</body>
+
+</html>
