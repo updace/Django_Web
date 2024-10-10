@@ -17,12 +17,25 @@ def login(request):
     print(name, password)
 
     # 以用户名查询数据库，如果用户名不存在，提示用户名不存在，如果用户名存在但密码不存在提示密码错误，如果密码正确则跳转到主界面（目前以翻译界面代替）
+    # 做非空处理
+    if name is not None or password is not None:
+        q=Account.objects.filter(username=name).values("username","password")
+        # 用户存在
+        if q:
+            u=q[0]["username"]
+            p=q[0]["password"]
+            print(q[0]["username"])
+            print(q[0]["password"])
 
-    # name 和 password 字段是字符串类型
-    if name == "222" and password == "222":
-        return redirect("/translate/")
+            # 账号密码一直
+            if u is not None and p is not None and name == u and password == p:
+                return redirect("/translate/")
+            else:
+                return render(request, "login.html")
+        else:
+            return render(request, "login.html")
     else:
-        return render(request, "login.html", {'name': name, 'password': password})
+        return render(request, "login.html")
 
 
 # 注册界面
@@ -34,15 +47,18 @@ def register(request):
     print(name, password, password_again)
 
     # 查询数据库，看用户名有没有重复，有重复直接返回用户已经存在，不允许注册同名用户！！！
+    q = Account.objects.filter(username=name)
 
     # 不为空则，写入数据库
     if name is not None and password is not None and password_again is not None:
         a=Account(username=name, password=password)
         a.save()
+        # 返回登录界面
+        return redirect("/")
 
     # 查询数据库，看有没有相同的账号存在，如果有就给出提示，并不让注册
 
-    # 检查两次输入的密码是否一致，如果不是，就提示两次输入的密码不一致提示重新输入
+    # 检查两次输入的密码是否一致，如果不是，就提示两次输入的密码不一致提示重新输入(前端实现)
 
     # 都检查无误将用户名和密码写入数据库，弹窗提醒登录成功！并返回登录界面
 
