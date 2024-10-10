@@ -1,0 +1,27 @@
+{#要载入静态文件夹才能使用静态文件！#}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI</title>
+    <link rel="Stylesheet" href={% static 'css/yiyan.css' %}>
+    <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static 'js/yiyan.js' %}"></script>
+</head>
+<body>
+<div class="main">
+    <div class="ans">
+        <textarea id="Answer" class="answer" readonly="true"></textarea>
+    </div>
+    <div class="que">
+        <textarea id="Question" class="question" placeholder="有问题，问AI"></textarea>
+    </div>
+    <br>
+    <div>
+        <button onclick="sub()">确认</button>
+    </div>
+
+</div>
+</body>
+</html>
