@@ -4,6 +4,8 @@ import requests
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
+from TestModel.models import *
+from django.db import connection
 import markdown
 import qianfan
 
@@ -30,6 +32,13 @@ def register(request):
     password = request.POST.get('Password')
     password_again = request.POST.get('Password_again')
     print(name, password, password_again)
+
+    # 查询数据库，看用户名有没有重复，有重复直接返回用户已经存在，不允许注册同名用户！！！
+
+    # 不为空则，写入数据库
+    if name is not None and password is not None and password_again is not None:
+        a=Account(username=name, password=password)
+        a.save()
 
     # 查询数据库，看有没有相同的账号存在，如果有就给出提示，并不让注册
 
