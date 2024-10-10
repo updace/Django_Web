@@ -8,24 +8,52 @@
 </head>
 <body>
 <div class="d1">
-    <form method="post" action="">
+    <form method="post" action="" onsubmit="return submit_data()">
         {% csrf_token %}
         <div class="head">
             注册页面
         </div>
         <br>
 
-        <input type="text" placeholder="用户名" name="Name" class="name" size="20px">
+        <input type="text" id="name" placeholder="用户名" name="Name" class="name" size="20px">
         <br>
-        <input type="text" placeholder="密码" name="Password" class="psw" size="20px">
+        <input type="text" id="psw" placeholder="密码" name="Password" class="psw" size="20px">
         <br>
-        <input type="text" placeholder="确认密码" name="Password_again" class="psw_again" size="20px">
+        <input type="text" id="psw_again" placeholder="确认密码" name="Password_again" class="psw_again" size="20px">
 
         <br>
         <div class="d2">
             <input type="submit" value="注册"/>
         </div>
     </form>
+
+
+    <script>
+        function submit_data() {
+            // 获取用户输入的用户名和密码
+            var name = document.querySelector(".name");
+            var pwd_input = document.querySelector(".psw")
+            var pwd_input_again = document.querySelector(".psw_again")
+            if (name.value == '') {
+                alert("用户名不能为空！");
+                return false;
+            }
+            // name_input.value 输入框的数据
+            else if (pwd_input.value != '' && pwd_input_again.value == pwd_input.value) {
+                return true
+            } else if (pwd_input.value != '') {
+                document.getElementById("psw").value = "";
+                document.getElementById("psw_again").value = "";
+                alert("密码不一致！")
+                // 阻止提交
+                return false;
+            }
+            else {
+                alert("密码不能为空！");
+                return false;
+            }
+        }
+    </script>
 </div>
 </body>
 </html>

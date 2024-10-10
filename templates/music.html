@@ -4,11 +4,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>AI</title>
-    <link rel="Stylesheet" href={% static 'css/yiyan.css' %}>
+    <title>music</title>
+    <link rel="Stylesheet" href={% static 'css/music.css' %}>
     <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
-    <script src="{% static 'js/yiyan.js' %}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="{% static 'js/music.js' %}"></script>
+
     <style>
         ul {
             list-style-type: none;
@@ -46,17 +46,11 @@
     <li><a href="{% url 'music' %}">音乐下载</a></li>
 </ul>
 
-
 <div class="main">
-    <div class="ans">
-        <textarea id="Answer" class="answer" readonly="true"></textarea>
-    </div>
-    <div class="que">
-        <textarea id="Question" class="question" placeholder="有问题，问AI"></textarea>
-    </div>
+    <div class="lin"><textarea id="linn" class="linn" placeholder="请输入下载链接"></textarea></div>
     <br>
     <div>
-        <button onclick="sub()">确认</button>
+        <button onclick="download()">确认</button>
     </div>
 
 </div>

@@ -10,42 +10,82 @@
     <title>翻译</title>
     <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
     <script src="{% static 'js/translate.js' %}"></script>
+
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            border: 1px solid #e7e7e7;
+            background-color: #f3f3f3;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: #666;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        /*鼠标移动到选项上修改背景颜色 */
+        li a:hover {
+            background-color: #c4cbcf;
+        }
+    </style>
 </head>
 
-<body>
-<div class="head">
-    <form action="#">
-        {% csrf_token %}
-        <select name="language" id="source_lang">
-            <option value="auto">自动</option>
-            <option value="zh">汉语</option>
-            <option value="en">英语</option>
-        </select>
-    </form>
+<body style="margin: 0">
+<ul>
+    <li><a href="{% url 'main' %}">首页</a></li>
+    <li><a href="{% url 'translate' %}">翻译</a></li>
+    <li><a href="{% url 'ai' %}">大语言模型</a></li>
+    <li><a href="{% url 'music' %}">音乐下载</a></li>
+</ul>
 
-    <img src="{% static 'images/下载.svg' %}" width="20px" height="20px">
+<div class="contain">
 
-    <form action="#">
-        {% csrf_token %}
-        <select name="language" id="target_lang">
-            <option value="zh">汉语</option>
-            <option value="en">英语</option>
-        </select>
-    </form>
-</div>
-<div class="main">
-    <div class="user">
-        <textarea id="Source" class="source" placeholder="请输入要翻译的文字"></textarea>
+    <div class="head">
+        <form action="#">
+            {% csrf_token %}
+            <select name="language" id="source_lang">
+                <option value="auto">自动</option>
+                <option value="zh">汉语</option>
+                <option value="en">英语</option>
+            </select>
+        </form>
+
+        <img src="{% static 'images/下载.svg' %}" width="20px" height="20px">
+
+        <form action="#">
+            {% csrf_token %}
+            <select name="language" id="target_lang">
+                <option value="zh">汉语</option>
+                <option value="en">英语</option>
+            </select>
+        </form>
+    </div>
+    <div class="main">
+        <div class="user">
+            <textarea id="Source" class="source" placeholder="请输入要翻译的文字"></textarea>
+        </div>
+
+        <div class="robot">
+            <textarea id="Target" class="target" placeholder="译文" readonly="true"></textarea>
+        </div>
+    </div>
+    <br>
+    <div class="translate_bt">
+        <button onclick="change()">翻译</button>
     </div>
 
-    <div class="robot">
-        <textarea id="Target" class="target" placeholder="译文" readonly="true"></textarea>
-    </div>
 </div>
-<br>
-<div class="translate_bt">
-    <button onclick="change()">翻译</button>
-</div>
+
 </body>
 
 </html>

@@ -5,13 +5,14 @@ body {
     flex-direction: row;
     justify-content: space-around;
     align-items: center; */
+}
 
+.contain {
     /* div标签居中显示 */
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
 }
 
 .head {
@@ -80,9 +81,9 @@ body {
     font-size: 20px;
 }
 
-.translate_bt{
+.translate_bt {
     display: flex;
     /*flex-direction: row;*/
-    justify-content:center;
-    align-items:center;
+    justify-content: center;
+    align-items: center;
 }

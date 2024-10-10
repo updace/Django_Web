@@ -20,7 +20,7 @@
     <img src="{% static 'images/log1.jpg' %}" width="500px" height="500px" style="border-radius: 10px;" alt="封面">
 </div>
 <div class="login">
-    <form method="post" action="">
+    <form method="post" action="" onsubmit="return submit_data()">
         {% csrf_token %}
         <div class="head">
             登录页面
@@ -40,6 +40,22 @@
             <input class="signup" type="button" value="注册" onclick="redict_to_register()"/>
         </div>
     </form>
+
+    <script>
+        function submit_data() {
+            // 获取用户输入的用户名和密码
+            var name = document.querySelector(".name");
+            var pwd_input = document.querySelector(".password")
+            if (name.value == '') {
+                alert("用户名不能为空！");
+                return false;
+            }
+            else if(pwd_input.value == '') {
+                alert("密码不能为空！");
+                return false;
+            }
+        }
+    </script>
 </div>
 </body>
 

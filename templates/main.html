@@ -1,14 +1,23 @@
-{#要载入静态文件夹才能使用静态文件！#}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>AI</title>
-    <link rel="Stylesheet" href={% static 'css/yiyan.css' %}>
+    <title>主界面</title>
+    <link rel="Stylesheet" href={% static 'css/main.css' %}>
+
     <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
-    <script src="{% static 'js/yiyan.js' %}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+    <script>
+        function redict_to_AI() {
+            window.location.href = '{% url "ai" %}';
+        }
+
+        function redict_to_translate() {
+            window.location.href = '{% url "translate" %}';
+        }
+    </script>
     <style>
         ul {
             list-style-type: none;
@@ -17,7 +26,6 @@
             overflow: hidden;
             border: 1px solid #e7e7e7;
             background-color: #f3f3f3;
-            width: 100%;
         }
 
         li {
@@ -45,20 +53,17 @@
     <li><a href="{% url 'ai' %}">大语言模型</a></li>
     <li><a href="{% url 'music' %}">音乐下载</a></li>
 </ul>
-
-
+<h1 style="text-align: center">搜索</h1>
 <div class="main">
-    <div class="ans">
-        <textarea id="Answer" class="answer" readonly="true"></textarea>
-    </div>
-    <div class="que">
-        <textarea id="Question" class="question" placeholder="有问题，问AI"></textarea>
-    </div>
-    <br>
-    <div>
-        <button onclick="sub()">确认</button>
-    </div>
+    <input type="text" class="search" id="search" placeholder="请输入你要搜索的内容"
+           style="background: url('{% static "images/搜索.png" %}'); background-repeat: no-repeat; background-size: 18px; background-position: 6px;">
+    <button class="bt" onclick="search()">搜索</button>
+</div>
+
+{#热榜#}
+<div class="hot_top">
 
 </div>
+
 </body>
 </html>

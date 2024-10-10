@@ -1,0 +1,42 @@
+.main{
+    /* div标签居中显示 */
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search{
+    text-indent: 30px;
+    width: 60%;
+    height: 30px;
+    border-radius: 15px 0 0 15px;
+    vertical-align:middle;
+
+    border: 1px solid #b2bbbe;
+
+    /* 设置聚焦后边框的颜色 */
+    outline-color: #bbb5ac;
+}
+
+.bt{
+    background-color: white;
+    height: 30px;
+    border-radius: 0 15px 15px 0;
+    vertical-align:middle;
+    box-sizing: content-box;
+
+    border: 1px solid #b2bbbe;
+}
+
+/*.bt:hover {*/
+/*  background-color: ;*/
+/*}*/
+
+.bt:active {
+  background-color: #bbb5ac;
+}
