@@ -19,8 +19,8 @@ from . import views
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
-    path('', views.main_page, name='main'),
-    # path('', views.login, name='login'),
+    # path('', views.main_page, name='main'),
+    path('', views.login, name='login'),
     path('translate/', views.translate_page, name='translate'),
 
     # 这里必须是 translate/trans/ ,而不能是trans/ 因为是translate页面下的url (js代码)
@@ -39,4 +39,6 @@ urlpatterns = [
     path('music/download/', views.download_music, name='download_music'),
 
     path('main/s/', views.search, name='search'),
+
+    path('main/hot_top/', views.hot_topic, name='hot_top'),
 ]

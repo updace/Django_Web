@@ -17,9 +17,90 @@
         function redict_to_translate() {
             window.location.href = '{% url "translate" %}';
         }
+
+        function toutiao_hot_top() {
+            {#window.alert("11")#}
+            $.ajax({
+                url: '/main/hot_top/',
+                async: true,
+                type: 'GET',
+                data: {
+                    // Forbidden（CSRF）方法：加上下面这一句
+                    "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val(),
+                },
+                headers: {"X-CSRFToken": "{{ csrf_token }}"},
+                success: function (response) {
+                    {#alert(response.t0);#}
+                    document.getElementById("a1").innerText = '1、' + response.t0;
+                    document.getElementById("a1").href = response.u0;
+
+                    document.getElementById("a2").innerText = '2、' +response.t1;
+                    document.getElementById("a2").href = response.u1;
+
+                    document.getElementById("a3").innerText = '3、' +response.t2;
+                    document.getElementById("a3").href = response.u2;
+
+                    document.getElementById("a4").innerText = '4、' +response.t3;
+                    document.getElementById("a4").href = response.u3;
+
+                    document.getElementById("a5").innerText = '5、' +response.t4;
+                    document.getElementById("a5").href = response.u4;
+
+                    document.getElementById("a6").innerText = '6、' +response.t5;
+                    document.getElementById("a6").href = response.u5;
+
+                    document.getElementById("a7").innerText = '7、' +response.t6;
+                    document.getElementById("a7").href = response.u6;
+
+                    document.getElementById("a8").innerText = '8、' +response.t7;
+                    document.getElementById("a8").href = response.u7;
+
+                    document.getElementById("a9").innerText = '9、' +response.t8;
+                    document.getElementById("a9").href = response.u8;
+
+                    document.getElementById("a10").innerText = '10、' +response.t9;
+                    document.getElementById("a10").href = response.u9;
+
+
+                    document.getElementById("weiboa1").innerText = '1、' +response.t10;
+                    document.getElementById("weiboa1").href = "https://s.weibo.com/weibo?q=%23" + response.t10;
+
+                    document.getElementById("weiboa2").innerText = '2、' +response.t11;
+                    document.getElementById("weiboa2").href = "https://s.weibo.com/weibo?q=%23" + response.t11;
+
+                    document.getElementById("weiboa3").innerText = '3、' +response.t12;
+                    document.getElementById("weiboa3").href = "https://s.weibo.com/weibo?q=%23" + response.t12;
+
+                    document.getElementById("weiboa4").innerText = '4、' +response.t13;
+                    document.getElementById("weiboa4").href = "https://s.weibo.com/weibo?q=%23" + response.t13;
+
+                    document.getElementById("weiboa5").innerText = '5、' +response.t14;
+                    document.getElementById("weiboa5").href = "https://s.weibo.com/weibo?q=%23" + response.t14;
+
+                    document.getElementById("weiboa6").innerText = '6、' +response.t15;
+                    document.getElementById("weiboa6").href = "https://s.weibo.com/weibo?q=%23" + response.t15;
+
+                    document.getElementById("weiboa7").innerText = '7、' +response.t16;
+                    document.getElementById("weiboa7").href = "https://s.weibo.com/weibo?q=%23" + response.t16;
+
+                    document.getElementById("weiboa8").innerText = '8、' +response.t17;
+                    document.getElementById("weiboa8").href = "https://s.weibo.com/weibo?q=%23" + response.t17;
+
+                    document.getElementById("weiboa9").innerText = '9、' +response.t18;
+                    document.getElementById("weiboa9").href = "https://s.weibo.com/weibo?q=%23" + response.t18;
+
+                    document.getElementById("weiboa10").innerText = '10、' +response.t19;
+                    document.getElementById("weiboa10").href = "https://s.weibo.com/weibo?q=%23" + response.t19;
+                },
+                error: function (data) {
+                    alert('失败')
+                }
+            });
+        }
+
     </script>
     <style>
-        ul {
+        .topnav {
             list-style-type: none;
             margin: 0;
             padding: 0;
@@ -28,11 +109,11 @@
             background-color: #f3f3f3;
         }
 
-        li {
+        .topnavli {
             float: left;
         }
 
-        li a {
+        .topnavli a {
             display: block;
             color: #666;
             text-align: center;
@@ -41,29 +122,99 @@
         }
 
         /*鼠标移动到选项上修改背景颜色 */
-        li a:hover {
+        .topnavli a:hover {
             background-color: #c4cbcf;
+        }
+
+        .hot_top {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hotbar {
+            height: auto;
+            width: 500px;
+            border: 1px solid #e7e7e7;
+            border-radius: 8px;
+        }
+
+        .hotbar ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .top_a {
+            display: block;
+            color: black;
+        {#text-align: center;#} padding: 8px 16px;
+            text-decoration: none;
         }
     </style>
 </head>
-<body style="margin: 0">
-<ul>
-    <li><a href="{% url 'main' %}">首页</a></li>
-    <li><a href="{% url 'translate' %}">翻译</a></li>
-    <li><a href="{% url 'ai' %}">大语言模型</a></li>
-    <li><a href="{% url 'music' %}">音乐下载</a></li>
+<body style="margin: 0" onload="toutiao_hot_top();">
+<ul class="topnav">
+    <li class="topnavli"><a href="{% url 'main' %}">首页</a></li>
+    <li class="topnavli"><a href="{% url 'translate' %}">翻译</a></li>
+    <li class="topnavli"><a href="{% url 'ai' %}">大语言模型</a></li>
+    <li class="topnavli"><a href="{% url 'music' %}">音乐下载</a></li>
 </ul>
-<h1 style="text-align: center">搜索</h1>
-<div class="main">
-    <input type="text" class="search" id="search" placeholder="请输入你要搜索的内容"
-           style="background: url('{% static "images/搜索.png" %}'); background-repeat: no-repeat; background-size: 18px; background-position: 6px;">
-    <button class="bt" onclick="search()">搜索</button>
+
+
+<div style="display: flex; flex-direction: column; justify-content: space-around; align-items: center;">
+    <h1>搜索</h1>
+    <div class="main">
+        <input type="text" class="search" id="search" placeholder="请输入你要搜索的内容"
+               style="background: url('{% static "images/搜索.png" %}'); background-repeat: no-repeat; background-size: 18px; background-position: 6px;">
+        <button class="bt" onclick="search()">搜索</button>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    {#热榜#}
+    <div class="hot_top">
+        <div class="hotbar">
+            <div style="text-align: center">头条热榜</div>
+            <ul>
+                <li><a class="top_a" id="a1" target="_blank"></a></li>
+                <li><a class="top_a" id="a2" target="_blank"></a></li>
+                <li><a class="top_a" id="a3" target="_blank"></a></li>
+                <li><a class="top_a" id="a4" target="_blank"></a></li>
+                <li><a class="top_a" id="a5" target="_blank"></a></li>
+
+                <li><a class="top_a" id="a6" target="_blank"></a></li>
+                <li><a class="top_a" id="a7" target="_blank"></a></li>
+                <li><a class="top_a" id="a8" target="_blank"></a></li>
+                <li><a class="top_a" id="a9" target="_blank"></a></li>
+                <li><a class="top_a" id="a10" target="_blank"></a></li>
+            </ul>
+        </div>
+
+        <div class="hotbar">
+            <div style="text-align: center">微博热榜</div>
+            <ul>
+                <li><a class="top_a" id="weiboa1" target="_blank"></a></li>
+                <li><a class="top_a" id="weiboa2" target="_blank"></a></li>
+                <li><a class="top_a" id="weiboa3" target="_blank"></a></li>
+                <li><a class="top_a" id="weiboa4" target="_blank"></a></li>
+                <li><a class="top_a" id="weiboa5" target="_blank"></a></li>
+
+                <li><a class="top_a" id="weiboa6" target="_blank"></a></li>
+                <li><a class="top_a" id="weiboa7" target="_blank"></a></li>
+                <li><a class="top_a" id="weiboa8" target="_blank"></a></li>
+                <li><a class="top_a" id="weiboa9" target="_blank"></a></li>
+                <li><a class="top_a" id="weiboa10" target="_blank"></a></li>
+            </ul>
+        </div>
+    </div>
 </div>
-
-{#热榜#}
-<div class="hot_top">
-
-</div>
-
 </body>
 </html>
