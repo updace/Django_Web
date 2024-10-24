@@ -27,9 +27,9 @@ def download_music(request):
     print("11111")
     url = request.GET.get('url')
     myfiles = requests.get(url)
-    # name = input("请输入重命名的名字：")
-    # open('C:/Users/Administrator/Desktop/music/m4a/' + name + '.m4a', 'wb').write(myfiles.content)
-    # trans_m4a_to_other('C:/Users/Administrator/Desktop/music/m4a/' + name + '.m4a', "MP3", name)
+    name = input("请输入重命名的名字：")
+    open('C:/Users/Administrator/Desktop/music/m4a/' + name + '.m4a', 'wb').write(myfiles.content)
+    trans_m4a_to_other('C:/Users/Administrator/Desktop/music/m4a/' + name + '.m4a', "MP3", name)
     result = '111'
     response = JsonResponse({'result': result})
     return response
@@ -208,6 +208,18 @@ def search(request):
     return response
 
 
+class hot_topic:
+    def __init__(self):
+        self.title = ''
+        self.url = ''
+
+
+# 定义一维类数组
+dataset = [hot_topic() for _ in range(50)]
+
+weibodataset = []
+
+
 def toutiao_hottop():
     # 头条热榜
     url = "https://www.toutiao.com/hot-event/hot-board/?origin=toutiao_pc&_signature=_02B4Z6wo00f01I-Pl9gAAIDAuKtThA1bExyPq5NAAET7a7mfwqCFLgw7GJ58uIZ--9Ndne.RucHvHUgiurQcQbuEs5KUHVRhbdgUnbXV9dJYEP0s.2YF6n4If1CkcE28.dcHdcfJsUUWCn5yf0"
@@ -217,10 +229,13 @@ def toutiao_hottop():
     js = json.loads(get.text)
 
     s = js['data']
+    count = 0
 
     for i in s:
-        print(i['Title'])
-        print(i['Url'])
+        # print(count)
+        dataset[count].title = i['Title']
+        dataset[count].url = i['Url']
+        count = count + 1
 
 
 def weibo_hottop():
@@ -253,16 +268,64 @@ def weibo_hottop():
 
     realtime = js['data']['realtime']
 
-    count = 0
-
     for i in realtime:
-        print(count, '：', i['word'])
-        count = count + 1
+        weibodataset.append(i['word'])
 
 
 # 热搜榜
 def hot_topic(request):
-    return HttpResponse("<a href='https://www.runoob.com/'>菜鸟教程</a>")
+    toutiao_hottop()
+    weibo_hottop()
+    # 键值对
+    data = {
+        't0': dataset[0].title,
+        'u0': dataset[0].url,
+        't1': dataset[1].title,
+        'u1': dataset[1].url,
+        't2': dataset[2].title,
+        'u2': dataset[2].url,
+        't3': dataset[3].title,
+        'u3': dataset[3].url,
+        't4': dataset[4].title,
+        'u4': dataset[4].url,
+        't5': dataset[5].title,
+        'u5': dataset[5].url,
+        't6': dataset[6].title,
+        'u6': dataset[6].url,
+        't7': dataset[7].title,
+        'u7': dataset[7].url,
+        't8': dataset[8].title,
+        'u8': dataset[8].url,
+        't9': dataset[9].title,
+        'u9': dataset[9].url,
+
+        't10': weibodataset[0],
+        't11': weibodataset[1],
+        't12': weibodataset[2],
+        't13': weibodataset[3],
+        't14': weibodataset[4],
+        't15': weibodataset[5],
+        't16': weibodataset[6],
+        't17': weibodataset[7],
+        't18': weibodataset[8],
+        't19': weibodataset[9],
+    }
+    # data = {
+    #     't0': '百度',
+    #     'u0': 'http://www.baidu.com',
+    #     't1': '百度',
+    #     'u1': 'http://www.baidu.com',
+    #     't2': '百度',
+    #     'u2': 'http://www.baidu.com',
+    #     't3': '百度',
+    #     'u3': 'http://www.baidu.com',
+    #     't4': '百度',
+    #     'u4': 'http://www.baidu.com',
+    #     't5': '百度',
+    #     'u5': 'http://www.baidu.com',
+    # }
+    response = JsonResponse(data)
+    return response
 
 
 # 主界面
