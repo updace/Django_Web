@@ -93,7 +93,7 @@ def register(request):
     return render(request, "register.html")
 
 
-# 翻译
+# AI
 def ai(question):
     # 获取token
     Tk_url = "https://aip.baidubce.com/oauth/2.0/token?client_id=Jaq24UTU9cl9DY9nFnEE5K6s&client_secret=ERNtSbLSFXMXA8H4kSN6pUCp2hgwaX1s&grant_type=client_credentials"
@@ -246,8 +246,8 @@ def weibo_hottop():
         "accept": "application/json, text/plain, */*",
         "accept-encoding": "gzip, deflate, br, zstd",
         "accept-language": "zh,zh-CN;q=0.9,en;q=0.8",
-        "client-version": "v2.46.22",
-        "cookie": "SINAGLOBAL=9488690630316.621.1720757688318; SCF=AlQtRoYeJUWJuhShcrudguDlDHMGsGKuUmvmvH-9mBs1GMcMKeRI4dbCw2WLka6Hq31xxmYoH_aykDbxMKoLJfA.; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9WWa7Zwmzm4e685UVY0aKcJB5JpX5KMhUgL.FoMcSK-7So-7S0M2dJLoIpXLxK-L1-zLBK5LxKqL1--L1-e4S0zfS0241h57SBtt; ULV=1725277832968:4:1:1:6787032062709.948.1725277832917:1723801918789; ALF=1731742949; SUB=_2A25KFM-1DeRhGeFI7lcR9ivMzDuIHXVpaE19rDV8PUJbkNANLRHakW1NfRHklGrR9Bh0OnWKnko5LQ_4-42fstje; PC_TOKEN=c53c742f36; XSRF-TOKEN=a-rUWmGSZBa6OVR5-gic8BUB; WBPSESS=KoI2RxkVo4tCZ07sE--ZjWCxbG4uQJhD9wLVtTNQz52jL4Igr1kM6lnuHz_Goqgzh-JmaplDBZ43Lp68Te8T8wmkh4AZUmEkLhmOQYqbJInulQfjsET4Ba9QFCXut6ejaMyXq8WzGVInuorvHoXDzQ==",
+        "client-version": "v2.46.23",
+        "cookie": "SINAGLOBAL=9488690630316.621.1720757688318; SCF=AlQtRoYeJUWJuhShcrudguDlDHMGsGKuUmvmvH-9mBs1GMcMKeRI4dbCw2WLka6Hq31xxmYoH_aykDbxMKoLJfA.; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9WWa7Zwmzm4e685UVY0aKcJB5JpX5KMhUgL.FoMcSK-7So-7S0M2dJLoIpXLxK-L1-zLBK5LxKqL1--L1-e4S0zfS0241h57SBtt; ULV=1729822288040:11:7:7:9425830747247.729.1729822288005:1729758112091; ALF=1732970105; SUB=_2A25KJwkpDeRhGeFI7lcR9ivMzDuIHXVpXQThrDV8PUJbkNB-LW71kW1NfRHklF_umqRFKFdH6U1_GleiMGGPHyK0; WBPSESS=KoI2RxkVo4tCZ07sE--ZjWCxbG4uQJhD9wLVtTNQz52jL4Igr1kM6lnuHz_Goqgzh-JmaplDBZ43Lp68Te8T8yWlNlU03Jfk5MArIf0tUDB-lZdiBP32SDMCeNLmXxZtJD0yWyGrOLbjH70zDTvXYQ==; PC_TOKEN=8eafe52929; XSRF-TOKEN=1CwIK2dgqWzJHHiRuRxTSn6s",
         "priority": "u=1, i",
         "referer": "https://weibo.com/hot/mine",
         "sec-ch-ua": "\"Chromium\";v=\"130\", \"Microsoft Edge\";v=\"130\", \"Not?A_Brand\";v=\"99\"",
@@ -256,10 +256,10 @@ def weibo_hottop():
         "sec-fetch-dest": "empty",
         "sec-fetch-mode": "cors",
         "sec-fetch-site": "same-origin",
-        "server-version": "v2024.10.17.1",
+        "server-version": "v2024.10.22.1",
         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0",
         "x-requested-with": "XMLHttpRequest",
-        "x-xsrf-token": "a-rUWmGSZBa6OVR5-gic8BUB"
+        "x-xsrf-token": "qiROIFrgVkA-rRd8G-yCczEt"
     }
 
     get = requests.get(url, headers=header)
